@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- /** * @author Amasty Team * @copyright Copyright (c) 2015 Amasty (http://www.amasty.com) * @package Koan_Parcelas */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="koan" translate="label" sortOrder="10">
+            <label>KOAN Soluções</label>
+        </tab> 
+
+        <section id="koan_parcelas" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>KOAN Parcelas</label>
+            <tab>general</tab>
+            <resource>Koan_Parcelas::koan_parcelas</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar parcelas no produto</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="discount" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Desconto</label>
+                    <comment>será usado no preço do produto</comment>
+                </field>
+                <field id="installments" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Nº de parcelas</label>
+                    <comment>será usado no preço do produto</comment>
+                </field>
+                <field id="max_parcelas" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Nº max de parcelas</label>
+                </field>
+                <field id="valor_minimo" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Valor minimo de parcela</label>
+                </field>
+                <field id="parcelas_sem_juros" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Parcela sem juro</label>
+                </field>
+                <field id="taxa_juros" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Taxa de juros</label>
+                </field>
+            </group>
+        </section>
+ 
+    </system>
+</config>

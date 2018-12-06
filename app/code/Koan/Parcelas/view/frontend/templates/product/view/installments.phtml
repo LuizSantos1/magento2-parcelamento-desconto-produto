@@ -1,0 +1,74 @@
+<?php 
+
+/* @var $block \Koan\Parcelas\Block\Product\View\ShowInstallments */
+    if ($block->isEnabled()) {
+        $_product = $block->getProduct();        
+        $desconto = $block->getDiscount();
+        $parcelas = $block->getInstallments();
+        $finalPrice = number_format ($_product->getFinalPrice()*((100-$desconto)/100), 2,",",".");
+
+        echo "em Até {$parcelas}x no Cartão de crédito Ou<p><strong><font size='6' style='color:green'>R$ {$finalPrice}</font> <br /> </strong>{$desconto}% Desconto Pagamento no Boleto a Vista.<strong><br></strong>";
+    }
+?>
+<?php if ($block->isEnabled()) :?>
+    <style type="text/css">
+        .parcelamento {width:100%;float:left;margin:5px 0 10px}
+        .parcelamento li {display:block;width:50%;float:left}
+        .pagamentos {width:100%;float:left;margin:10px 0 }
+        .pagamentos li {display:block;float:left}
+        #installments_loading {
+            padding: 20px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #installments_table th, #installments_table td {
+            padding: 1px 12px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        #installments_table th {
+            background-color: #F0F0F0;
+            font-weight: bold;
+            text-align: center;
+        }
+        #installments_table td {
+            border-top: 1px solid #999999;
+            text-align: left;
+            font-size: 11px;
+        }
+        #installments_table tr:hover td {
+            background-color: #F7F7F7;
+        }
+        #installments_table .first_col {
+            text-align: center;
+        }
+        #installments_table .highlight_col {
+            padding: 1px 12px 12px;
+            font-size: 13px;
+        }
+        #installments_table .subtitle_line th {
+            font-weight: normal;
+        }
+    </style>
+
+            <table id="installments_table">
+                <tr class="subtitle_line">
+                    <th>Parcelas</th>
+                    <th>Valor da parcela</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+                <?php
+                $installments = $block->getInstallment();
+                foreach ($installments as $parcels => $installment):
+                    ?>
+                    <tr>
+                        <td class="first_col"><?php echo $parcels + 1; ?></td>
+                        <td>R$ <?php echo $installment['valor_parcela']; ?></td>
+                        <td>R$ <?php echo $installment['valor_total']; ?></td>
+                        <td><?php echo $installment['msg_extra']; ?></td>
+                    </tr>
+            <?php endforeach; ?>
+            </table>
+<?php endif; ?>

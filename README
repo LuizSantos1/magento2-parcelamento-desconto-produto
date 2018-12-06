@@ -1,0 +1,7 @@
+
+
+php bin/magento module:enable Koan_Parcelas
+
+php bin/magento setup:upgrade
+
+php bin/magento cache:flush
